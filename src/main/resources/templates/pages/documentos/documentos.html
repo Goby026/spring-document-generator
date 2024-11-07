@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{layout/layout :: head}">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="~{layout/layout :: header}"></header><!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="~{layout/layout :: sidebar}"></aside><!-- End Sidebar-->
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-8 offset-2">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Default Table</h5>
+                        <!-- Default Table -->
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Start Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Brandon Jacob</td>
+                                <td>Designer</td>
+                                <td>28</td>
+                                <td><button class="btn btn-success">VER PDF</button></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<a th:href="@{'/make-pdf/'+ ${documento.id}(format=pdf)}" target="_blank" type="button" class="btn btn-danger">Ficha PDF</a>
+
+</main>
+
+<!-- ======= Footer ======= -->
+<footer th:replace="~{layout/layout :: footer}"></footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+</body>
+
+</html>

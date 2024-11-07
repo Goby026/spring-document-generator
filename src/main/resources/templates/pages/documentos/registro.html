@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{layout/layout :: head}">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="~{layout/layout :: header}"></header><!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="~{layout/layout :: sidebar}"></aside><!-- End Sidebar-->
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-8 offset-2">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Elementos de oficio</h5>
+
+                        <!-- ===FECHA=== -->
+                        <form th:action="@{/documentos/registro}" th:object="${oficio}" method="post">
+                            <div class="row mb-3">
+                                <label for="fecha" class="col-sm-3 col-form-label">Fecha</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control" id="fecha" th:field="*{fecha}">
+                                </div>
+                            </div>
+
+                            <!-- ===NUMERO OFICIO=== -->
+                            <div class="row mb-3">
+                                <label for="numero" class="col-sm-3 col-form-label">N° Oficio</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="numero" th:field="*{numero}">
+                                </div>
+                            </div>
+
+                            <!-- ===CARGO=== -->
+                            <div class="row mb-3">
+                                <label class="col-sm-3 col-form-label">Cargo</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select" aria-label="Default select example" th:field="*{cargo}">
+                                        <option value="0" selected="">Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- ===DESPACHO=== -->
+                            <div class="row mb-3">
+                                <label class="col-sm-3 col-form-label">Despacho</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select" aria-label="Default select example" th:field="*{despacho}">
+                                        <option value ="0" selected="">Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- ===CIUDAD=== -->
+                            <div class="row mb-3">
+                                <label for="ciudad" class="col-sm-3 col-form-label">Ciudad</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="ciudad" th:field="*{ciudad}">
+                                </div>
+                            </div>
+
+                            <!-- ===ASUNTO=== -->
+                            <div class="row mb-3">
+                                <label for="asunto" class="col-sm-3 col-form-label">Asunto</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="asunto" th:field="*{asunto}">
+                                </div>
+                            </div>
+
+                            <!-- ===REFERENCIA=== -->
+                            <div class="row mb-3">
+                                <label for="referido" class="col-sm-3 col-form-label">Referencia</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="referido" th:field="*{referido}">
+                                </div>
+                            </div>
+
+                            <!-- ===CASO FISCAL / EXPEDIENTE / LIBRE=== -->
+                            <div class="row mb-3">
+                                <label for="casofiscal" class="col-sm-3 col-form-label">Caso fiscal</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="casofiscal" th:field="*{casofiscal}">
+                                </div>
+                            </div>
+
+                            <!-- ===CONTENIDO=== -->
+                            <div class="row mb-3">
+                                <label for="contenido" class="col-sm-3 col-form-label">Contenido</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" style="height: 100px" id="contenido" th:field="*{contenido}"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- ===REGISTRAR OFICIO=== -->
+                            <div class="row mb-3">
+                                <label class="col-sm-3 col-form-label"></label>
+                                <div class="col-sm-9">
+                                    <button type="submit" class="btn btn-primary">Registrar oficio</button>
+                                </div>
+                            </div>
+
+                        </form><!-- End General Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <a th:href="@{'/make-pdf/'+ ${oficio.id}(format=pdf)}" target="_blank" type="button"
+       class="btn btn-danger">Ficha PDF</a>
+
+</main>
+
+<!-- ======= Footer ======= -->
+<footer th:replace="~{layout/layout :: footer}"></footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+</body>
+
+</html>

@@ -32,11 +32,16 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${titulo}"></h5>
-                        <form th:action="@{/cargos/save}" th:object="${cargo}" method="post">
+                        <form th:action="@{/cargos/save}" th:object="${cargo}" method="POST">
                             <div class="row mb-3">
                                 <label for="cargo" class="col-sm-3 col-form-label">Descripción</label>
                                 <div class="col-sm-9">
+                                    <input type="hidden"
+                                           th:field="*{id}"/>
                                     <input type="text" class="form-control" id="cargo" th:field="*{descripcion}">
+                                    <small class="form-text text-danger"
+                                           th:if="${#fields.hasErrors('descripcion')}"
+                                           th:errors="*{descripcion}"></small>
                                 </div>
                             </div>
 

@@ -2,6 +2,7 @@ package dev.grover.booksauthors.services;
 
 import dev.grover.booksauthors.domain.Cargo;
 import dev.grover.booksauthors.repositories.CargoRepo;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class CargoService implements DAOService<Cargo> {
 
     @Override
     public Cargo registrar(Cargo p) throws Exception {
+        p.setEstado(1);
         return this.repo.save(p);
     }
 
@@ -31,6 +33,6 @@ public class CargoService implements DAOService<Cargo> {
 
     @Override
     public List<Cargo> listar() throws Exception {
-        return this.repo.findAll();
+        return this.repo.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 }
